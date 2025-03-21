@@ -197,7 +197,7 @@ class ADC:
 
         if self.moco:
             print('Registering across b-values')
-            self.pixel_array_mean, across_b_deform, _, _ = mdreg.fit(
+            self.pixel_array_mean, _, _, _, across_b_deform = mdreg.fit(
                 self.pixel_array_mean,
                 force_2d=True,
                 verbose=0,
@@ -208,7 +208,8 @@ class ADC:
                 },
                 fit_coreg={
                     'package' : 'elastix',
-                    'parallel': False,  # elastix is not parallelizable
+                    'parallel': True,
+                    'return_deform': True,
                 }
             )
             
@@ -239,10 +240,16 @@ class ADC:
             pixel_array_bval = self.pixel_array[..., self.bvals == bval]
             if pixel_array_bval.shape[-1] > 1:
                 print(f"Registering {bval}")
-                pixel_array_bval_reg, deform_bval, _, _ = mdreg.fit(
+                pixel_array_bval_reg, _, _, _, deform_bval = mdreg.fit(
                     pixel_array_bval,
                     verbose=0,
-                    force_2d=True)
+                    force_2d=True,
+                    fit_coreg={
+                        'package'      : 'elastix',
+                        'parallel'     : True,
+                        'return_deform': True,
+                    }
+                )
             else:
                 print(f"Registering {bval}")
                 pixel_array_bval_reg = pixel_array_bval
