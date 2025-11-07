@@ -59,7 +59,6 @@ jobs:
         pip install scikit-build cmake ninja pybind11 setuptools wheel # Build tools
         pip install pytest codecov pytest-cov # Testing tools
         pip install --no-cache-dir --upgrade --force-reinstall -r requirements.txt 
-        pip install --no-cache-dir --upgrade --force-reinstall numpy~=1.26.4
     - name: Test with pytest
       run: |
         pytest --cov-report=xml --cov=ukat
