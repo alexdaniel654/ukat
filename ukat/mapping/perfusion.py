@@ -64,7 +64,7 @@ class Perfusion:
                 force_2d=True, 
                 fit_coreg = {
                     'package'      : 'elastix',
-                    'parallel'     : True,
+                    'parallel'     : False,
                     'return_deformation': True,
                 })
         self.label = self.pixel_array[..., 0::2]

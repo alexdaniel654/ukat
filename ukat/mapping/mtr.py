@@ -78,7 +78,7 @@ class MTR:
                 force_2d=True,
                 fit_coreg = {
                     'package'      : 'elastix',
-                    'parallel'     : True,
+                    'parallel'     : False,
                     'return_deformation': True,
                 }
             )

@@ -352,14 +352,14 @@ class T1:
                         'mag_corr': self.mag_corr,
                         # MOLLI-correction is not relevant for MDR
                         'molli': False,
-                        'multithread': False,
+                        'multithread': self.multithread,
                     },
                     # All default settings but kept here as a template for if
                     # we decide to expose coreg options to ukat users in the
                     # future.
                     fit_coreg={
                         'package': 'elastix',
-                        'parallel': self.multithread,
+                        'parallel': False,
                         'return_deformation': True,
                     }
                 )
@@ -393,14 +393,14 @@ class T1:
                             'mag_corr': self.mag_corr,
                             # MOLLI-correction is not relevant for MDR
                             'molli': False,
-                            'multithread': False,
+                            'multithread': self.multithread,
                         },
                         # All default settings but kept here as a template for
                         # if we decide to expose coreg options to ukat users
                         # in the future.
                         fit_coreg={
                             'package': 'elastix',
-                            'parallel': self.multithread,
+                            'parallel': False,
                             'return_deformation': True,
                         }
                     )
