@@ -360,7 +360,7 @@ class T1:
                     fit_coreg={
                         'package': 'elastix',
                         'parallel': True,
-                        'return_deform': True,
+                        'return_deformation': True,
                     }
                 )
             else:
@@ -401,7 +401,7 @@ class T1:
                         fit_coreg={
                             'package': 'elastix',
                             'parallel': True,
-                            'return_deform': True,
+                            'return_deformation': True,
                         }
                     )
             # Changing the dimensions of the deformation field to a more
