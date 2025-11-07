@@ -352,21 +352,21 @@ class T1:
                         'mag_corr': self.mag_corr,
                         # MOLLI-correction is not relevant for MDR
                         'molli': False,
-                        'multithread': self.multithread,
+                        'multithread': False,
                     },
                     # All default settings but kept here as a template for if
                     # we decide to expose coreg options to ukat users in the
                     # future.
                     fit_coreg={
                         'package': 'elastix',
-                        'parallel': True,
+                        'parallel': self.multithread,
                         'return_deformation': True,
                     }
                 )
             else:
                 pixel_array = np.zeros(self.pixel_array.shape)
-                deform = np.zeros((*self.pixel_array.shape[:3], 2,
-                                   self.pixel_array.shape[3]))
+                deform = np.zeros((*self.pixel_array.shape[:3],
+                                   self.pixel_array.shape[3], 2))
 
                 # The following for loop is a workaround to allow a
                 # different inversion list for each slice of data. Most of
@@ -393,14 +393,14 @@ class T1:
                             'mag_corr': self.mag_corr,
                             # MOLLI-correction is not relevant for MDR
                             'molli': False,
-                            'multithread': self.multithread,
+                            'multithread': False,
                         },
                         # All default settings but kept here as a template for
                         # if we decide to expose coreg options to ukat users
                         # in the future.
                         fit_coreg={
                             'package': 'elastix',
-                            'parallel': True,
+                            'parallel': self.multithread,
                             'return_deformation': True,
                         }
                     )

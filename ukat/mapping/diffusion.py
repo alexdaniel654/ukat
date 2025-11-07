@@ -209,7 +209,7 @@ class ADC:
                 fit_coreg={
                     'package' : 'elastix',
                     'parallel': True,
-                    'return_deform': True,
+                    'return_deformation': True,
                 }
             )
             
@@ -247,7 +247,7 @@ class ADC:
                     fit_coreg={
                         'package'      : 'elastix',
                         'parallel'     : True,
-                        'return_deform': True,
+                        'return_deformation': True,
                     }
                 )
             else:
